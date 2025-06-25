@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aiogram = "==3.4.1"
+asyncpg = "==0.29.0"
+python-dotenv = "==1.0.0"
+asyncio-mqtt = "==0.16.1"
+pillow = "==10.3.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
