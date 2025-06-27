@@ -3,3 +3,4 @@ asyncpg==0.29.0
 python-dotenv==1.0.0
 asyncio-mqtt==0.16.1
 Pillow==10.3.0
+Flask==2.3.3
