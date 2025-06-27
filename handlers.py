@@ -256,7 +256,7 @@ async def referral_handler(message: Message):
     lang = user['language']
 
     stats = await db.get_referral_stats(message.from_user.id)
-    referral_link = f"https://t.me/esl2Bot?start=ref{message.from_user.id}"
+    referral_link = f"https://t.me/esl4allbot?start=ref{message.from_user.id}"
 
     await message.answer(
         TEXTS[lang]['your_referral_link'].format(
