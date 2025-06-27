@@ -1,3 +1,4 @@
+from aiogram import Bot
 from aiogram import Router, F
 from aiogram.filters import Command, CommandStart
 from aiogram.types import Message, CallbackQuery, ReplyKeyboardRemove
@@ -7,6 +8,7 @@ from keyboards import *
 from texts import TEXTS
 from states import Registration, Payment, Question, Settings
 import re
+
 from config import ADMIN_GROUP_ID
 
 router = Router()
