@@ -276,12 +276,13 @@ async def question_text_handler(message: Message, state: FSMContext):
 
 
 @router.message(F.text.in_([TEXTS['uz']['referral'], TEXTS['ru']['referral'], TEXTS['en']['referral']]))
-async def referral_handler(message: Message):
+async def referral_handler(message: Message, bot: Bot):
     user = await db.get_user(message.from_user.id)
     lang = user['language']
 
     stats = await db.get_referral_stats(message.from_user.id)
-    referral_link = f"https://t.me/esl2Bot?start=ref{message.from_user.id}"
+    bot_info = await bot.get_me()
+    referral_link = f"https://t.me/{bot_info.username}?start=ref{message.from_user.id}"
 
     await message.answer(
         TEXTS[lang]['your_referral_link'].format(
