@@ -192,7 +192,9 @@ async def payment_screenshot_handler(message: Message, state: FSMContext):
     lang = user['language']
 
     payment_id = await db.add_payment(message.from_user.id, message.photo[-1].file_id)
-
+    
+    await message.answer(TEXTS[lang]['payment_sent'], reply_markup=main_menu_keyboard(lang))
+    
     # Send to admin group
     from main import bot
 
