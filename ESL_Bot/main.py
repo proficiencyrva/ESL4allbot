@@ -8,6 +8,7 @@ from handlers import router
 from notifications import schedule_notifications
 from flask import Flask
 from threading import Thread
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -24,8 +25,9 @@ def healthy():
     return "<b>Bot is alive🎉🥳</b>", 200
 
 def run_flask():
-    web_app.run(host="0.0.0.0", port=5000)
-
+    # Optional: You can dynamically use PORT from environment if needed
+    port = int(os.environ.get("PORT", 5000))
+    web_app.run(host="0.0.0.0", port=port)
 
 async def main():
     """Main function to run the bot"""
@@ -48,6 +50,10 @@ async def main():
     finally:
         await db.close_pool()
 
-
 if __name__ == "__main__":
+    # Start Flask in a separate thread
+    flask_thread = Thread(target=run_flask)
+    flask_thread.start()
+
+    # Run the Telegram bot
     asyncio.run(main())
